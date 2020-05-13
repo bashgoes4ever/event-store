@@ -1,0 +1,4031 @@
+@import "./fonts"
+
+*
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+#root
+  width: 100%
+  overflow: hidden
+
+body, html
+  margin: 0
+  font-family: 'GraphikLCG'
+  color: #1d1c1c
+
+input:focus, button:focus
+  outline: none
+
+button, input
+  border: none
+  background-color: transparent
+  font-family: 'GraphikLCG'
+  cursor: pointer
+
+a
+  text-decoration: none
+  color: inherit
+
+ul
+  list-style: none
+  padding: 0
+  margin: 0
+
+.container
+  width: 1400px
+  margin: 0 auto
+  position: relative
+
+header
+  padding: 43px 0 40px 0
+  background-color: #f3f7fa
+  .header__bg
+    position: absolute
+  .header__bg1
+    left: 155px
+    top: -43px
+  .header__bg2
+    right: 455px
+    top: -43px
+  .header__bg3
+    right: -260px
+    top: -43px
+  .header__bg4
+    left: -260px
+    top: -43px
+  .header__bg5
+    right: -180px
+    top: 80px
+
+.header-absolute
+  position: absolute
+  top: 0
+  right: 0
+  left: 0
+  z-index: 10
+  background-color: transparent
+  padding-bottom: 18px
+  .header__bg
+    display: none
+
+.header__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+
+.header__left
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-start
+
+.header__logo
+  margin-right: 70px
+
+.header__search
+  position: relative
+  margin-bottom: 25px
+  &::before
+    content: ''
+    width: 17px
+    height: 17px
+    -webkit-background-size: cover
+    background-size: cover
+    background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAMAAAANf8AYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUdHBz///8dHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwAAABAq8aZAAAAlHRSTlMAAANBgbXd9vfguII/J5Lt6Ycepv76jxEBbepNDK6JD8nXtqO33KUGCsZdExljw6nBMUDSagRLGPBCWuWbRFmIH/xniwd25zPUOrwifWR7spbZ4vi91tiwyr7e+5OEaWXHBezVzw3kdSV/mvShVoMc8nwLl0ZIAuHCzXMpMNrvzMDQ8whm6HgboCGK5oU10as5cbsXQvDe8gAAAAFiS0dElQhgeoMAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfkBBcSKh+EjowRAAACUElEQVRIx6XV7V8MURQH8LMTtt1YtT0NRdYmVCtksxWtZVMokccQiuSxItYzkfIYyvzBmnPn4dw7946dj/Nuz+98d2bnzt4LQEsrWbN2XdgwSiPRsvUayCoUCtGPG2IbDVLlFfF/mXhllSFUdU2tn9E3hQ1Jba5Tm/othqK2agrTsM0dSmxPJht3uJ+bdkrNrt32QGNzC4taU3vsXpsuM5VWuncfTfe3W+0KiUlZT+kA94UA6TLrSXZ4zMEMBuFO72J0VWPU3SCaQ+wqh2Wr3sMulBXMkRy2j0rfFMiye2jhzTH283W5yScw7uWMdhybfaCoOoz7OXMCeydVBHR2oVPUDGBrUGngNA6kqBnCVqva9OHAGWrOmp1hNYH0Oe7mTYOd8z4GLpgTF6nBK1/yM5fNicj/GnyjRvxMglsg01zBl9CH5K+aE1FqonhzcbVhi36NmlFsXVcbNnCDmhJs3VQSLeJ9d8bGsdepMs0Y3wJqIIbN22k5mbiD8SRv7rI//T25uY/hg1rewEP2/30kI1MsmwLBTM+wDaHLSx4zMlwvGhi09rHRMV48mbWCp+AxkLSy/mckLPQ8t3fSWd1r8i/s9OWr15gX3gy8JRs9Qc4ePzHi5u/ez819+CicDi5yz5L5JsO/HETPuU8zstGFjkUBcWfj5y85UZTWrG7UAhLO4K/fuqn4/mMa2zwSzOoGuDTZ9nMhkylv/7X4uyCsLEMeo6gsQcUaB8UCGAdlAxgXBTAUFW0IKt44qDeAsVEmiLFQLpBhaCiYgeXxqpU/fwE055+vDNOESgAAAABJRU5ErkJggg==')
+    position: absolute
+    top: 4px
+    left: 7px
+  input
+    display: block
+    width: 410px
+    border: none
+    border-bottom: 1px solid #d1d5df
+    padding: 5px 0 10px 37px
+    font-size: 13px
+    font-weight: 300
+    &::placeholder
+      color: #59596e
+
+nav
+  ul
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: center
+    padding-left: 7px
+  li
+    text-transform: uppercase
+    margin-right: 48px
+    font-family: 'Scada'
+    font-weight: bold
+    font-size: 14px
+    transition: all .3s
+    &:last-child
+      margin-right: 0
+    &:hover
+      opacity: .5
+
+.basket-icon
+  display: block
+  position: relative
+  top: -2px
+  width: 22px
+  height: 17px
+  -webkit-background-size: cover
+  background-size: cover
+  background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAA5CAMAAACiTZ0RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABklBMVEUdHBz///8dHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwAAABYoizIAAAAhHRSTlMAAA+s++51A7xYj6helV82+PYrGeVaB8eJnbVt2BBB/PAoIO39SgvSd9EBq6Z8zQkKTv7pHSny+jwtMDXakibF4VCAitb0oh57R1FwEmRnFRRlmSXoLOoFwqSy68/d0K4T4IQ+XDK4t449wcvZzpiXlJGMDr3AERfJDEYjIsx5sHonBKmj1Zy2AAAAAWJLR0SFFddq5wAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+QEFxEyHJ3a+6sAAAMnSURBVFjDrZd3WxpBEMZXQVCMEXsvWIgBJXbsCnbFgr33rjHFxCQak2jug+d2Zg8ObuF2nzB/vTvzzo/zbm/2JIQT6RZrho1ww5ZhtaTrE2kseGZ7pqJGFq+URSuZdkGQg7qVbF4pG0oOMdArMCs5PFAO1l6LgHKd4M3L54Hy86DozDUHFRTijxbxb3YRVgsLzEDFJegsJQmiFOslxSagMvSV2xOB7OXoKEsOqkBXZRVJGFWV6KlIBqquAU+tiyQJVy2YaqoTg+rqwdLQSJJGYwPY6usSgdxv8KKbiEk0oe+tmw/yeLHe7DEDeZrR6fVwQS1Y9b0z4xDS6kNvCw/U1g61jk5zDiGdHWBubzOCurqh5O8R4RDS4wd7d1cUZO/tU6N/AC92sE8wBtE/0E8XvfY0MsQI/xcDQ2Q4FRxFGSap4SgKGUkNZ4QE/Kng+APqc7cFg6OwGgtKxhi0jQaDti62jzzjNOMT20LRgP097tFvSJaS47Cfj9nZE3CRk3KgSWiaiAFNQW5aDjQNTVMxoBnIzUY8obn5BU0vhsOLml6YnwtFTLPQNBMDckFuSbMsr6gDcJWV1hRljc3eVXWErixrriVocsWA1q00t6FZNulqC7WFagvqLao3NdcGXVnXY8cIbIltbbVDV7uo96jeQ71L9Y7m2obNFzeP9uEyD4iu+dAIOtRpcgAt+3GgI8gey4COoeUoDnQC2bAMKAwtJ3GgU8g6ZED4GXUaB2qF7JkM6Axa3PHD/1DXKwbCDsMpco58cZAbGs4NoAv8i8VBeFcvDCD2DMRB7DkbQJe4K8RBuPMuDaAQ7lNxEL4LIePZj2+OOIi9nUbQFb7LoK+pvsE8vMDvUd9QfQ0S58UVB3SL0yX6CD9g/iPVn1DDp+pnkDjBbjkgNu9A331RlK/3mL9XLzXzDvW37+ru/wFSm6lG0ANOYLZ6fIxW9HroJxM45R84IHYmEMHQzh3Op5/cIYknIfcb8knmkMTD8YkLkjokIzeCA/oFtY3fQgEniPKHCwoo0hHggp7lQc9c0ItTluN84f8v4pUF/SV80MJ+jQwmz5uuA/0DFzwfMs4MRMoAAAAASUVORK5CYII=')
+
+.header__right__links
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  margin-bottom: 26px
+  padding-right: 17px
+  li
+    margin-right: 40px
+    color: #59596e
+    font-size: 13px
+    font-weight: 300
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      bottom: -1px
+      right: 0
+      left: 0
+      height: 1px
+      background-color: #59596e
+      transition: all .3s
+    &:hover
+      &::after
+        opacity: 0
+    &:last-child
+      margin-right: 0
+
+.header__right__phone
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-end
+  align-items: center
+  .phone
+    font-weight: 600
+    margin-right: 47px
+  button
+    width: 180px
+    height: 42px
+    border-radius: 21px
+    border: 1px solid #e91e63
+    font-family: 'Scada'
+    font-size: 14px
+    text-transform: uppercase
+    transition: all .3s
+    &:hover
+      background-color: #e91e63
+      color: #ffffff
+
+.home__block1__bg1
+  position: absolute
+  top: -235px
+  left: -260px
+
+.home__block1__bg2
+  position: absolute
+  top: 175px
+  left: 60px
+
+.home__block1__bg3
+  position: absolute
+  top: 53px
+  right: 435px
+
+.home__block1__bg4
+  position: absolute
+  top: -285px
+  right: -260px
+
+.home__block1__bg5
+  position: absolute
+  top: 245px
+  right: -177px
+
+.home__block1__bg6
+  position: absolute
+  bottom: -70px
+  right: 217px
+
+.home__block1
+  background-color: #f3f7fa
+  padding: 285px 0 110px 0
+  .description
+    text-align: center
+    font-size: 16px
+    font-weight: 300
+    color: #59596e
+    margin-bottom: 45px
+    margin-top: 13px
+  h1
+    font-size: 50px
+    line-height: 50px
+    font-weight: 600
+    text-align: center
+
+.dropdown-indicator
+  position: relative
+  width: 23px
+  height: 23px
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  border-radius: 50%
+  background-color: #e7eaef
+  margin-right: 5px
+  &::after
+    content: ''
+    position: absolute
+    width: 5px
+    height: 5px
+    border-bottom: 1px solid #000
+    border-right: 1px solid #000000
+    top: 45%
+    left: 50%
+    transform: translate(-50%, -50%) rotate(45deg)
+
+.dropdown-indicator.dropdown-up
+  background-color: #0f0f15
+  &::after
+    border-color: #fff
+    top: 60%
+    transform: translate(-50%, -50%) rotate(-135deg)
+
+.select
+  width: 270px
+
+.home__block1__form
+  width: 950px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  margin: 0 auto
+  position: relative
+  z-index: 2
+  button
+    width: 210px
+    height: 52px
+    background-color: #e91e63
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    color: #ffffff
+    font-weight: bold
+    font-size: 14px
+    text-transform: uppercase
+    transition: all .3s
+    &:hover
+      opacity: .7
+
+.input-block
+  position: relative
+  display: block
+  -webkit-border-radius: 26px
+  -moz-border-radius: 26px
+  border-radius: 26px
+  border: 1px solid hsl(0, 0%, 80%)
+  overflow: hidden
+  input
+    display: block
+    background-color: #ffffff
+    padding-left: 90px
+    color: #050708
+    font-size: 16px
+    width: 150px
+    height: 52px
+  .icon
+    position: absolute
+    width: 150px
+    height: 52px
+    top: 0
+    bottom: 0
+    right: 86px
+    background-color: #e7eaef
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    img
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: 22px
+      width: 22px
+
+.home__block1__cards
+  margin-top: 110px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.block1__card
+  width: 250px
+  height: 290px
+  overflow: hidden
+  position: relative
+  padding-top: 45px
+  padding-left: 30px
+  .image
+    position: absolute
+  .chip
+    display: inline-block
+    padding: 0 8px
+    height: 23px
+    line-height: 23px
+    margin-bottom: 14px
+    -webkit-border-radius: 11px
+    -moz-border-radius: 11px
+    border-radius: 11px
+    font-family: 'Scada'
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    color: #ffffff
+  .title
+    color: #ffffff
+    position: relative
+    z-index: 1
+    font-size: 22px
+    font-weight: 600
+    padding-left: 6px
+    img
+      margin-left: 15px
+      position: relative
+      top: -2px
+      transition: all .3s
+      transform: translateX(0)
+      width: 16px
+  &:hover
+    .title img
+      transform: translateX(10px)
+
+.card1
+  background-color: #cd8951
+  .chip
+    background-color: #c96b3d
+  .image
+    bottom: 20px
+    right: -30px
+
+.card2
+  background-color: #5ebc6c
+  .chip
+    background-color: #35a345
+  .image
+    bottom: 17px
+    right: -38px
+
+.card3
+  background-color: #0f0f15
+  .chip
+    background-color: #262630
+  .image
+    bottom: 10px
+    right: -25px
+
+.card4
+  background-color: #d46f49
+  .chip
+    background-color: #c15227
+  .image
+    bottom: 10px
+    right: -25px
+
+.card5
+  background-color: #ba252f
+  .chip
+    background-color: #9c1e2a
+  .image
+    bottom: -100px
+    right: -7px
+
+.home__block2
+  padding: 90px 0 115px 0
+
+.home__block2__bg
+  position: absolute
+  left: -150px
+  bottom: -200px
+
+h2
+  font-weight: 600
+  font-size: 30px
+  line-height: 40px
+  text-align: center
+
+.title-wrapper
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  h2
+    text-align: left
+
+.title-wrapper-link
+  font-family: 'Scada'
+  font-size: 14px
+  text-transform: uppercase
+  font-weight: bold
+  display: block
+  height: 52px
+  line-height: 52px
+  background-color: #f4f8fb
+  -webkit-border-radius: 26px
+  -moz-border-radius: 26px
+  border-radius: 26px
+  padding: 0 47px
+  transition: all .3s
+  &:hover
+    opacity: .7
+
+.home__block2__flex
+  margin-top: 22px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.equipment__item
+  display: block
+  background-color: #f4f8fb
+  width: 250px
+  height: 400px
+  position: relative
+  overflow: hidden
+  padding-top: 80px
+  padding-left: 37px
+  .image
+    position: absolute
+    bottom: 0
+    right: 0
+  .title
+    position: relative
+    z-index: 1
+    font-size: 22px
+    font-weight: 600
+    img
+      filter: invert(1)
+      margin-left: 15px
+      position: relative
+      top: -2px
+      transition: all .3s
+      transform: translateX(0)
+  .text
+    margin-top: 21px
+    color: #59596e
+    font-size: 14px
+    line-height: 24px
+    position: relative
+    z-index: 1
+  .chip
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: center
+    margin-top: 75px
+    position: relative
+    z-index: 1
+    .icon
+      width: 48px
+      height: 48px
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      background-color: #e91e63
+      position: relative
+      margin-right: 12px
+      img
+        position: absolute
+        top: 50%
+        left: 50%
+        width: 29px
+        transform: translate(-50%, -50%)
+  .chip-title
+    font-weight: 600
+    font-size: 14px
+    line-height: 18px
+  &:hover
+    .title img
+      transform: translateX(10px)
+
+.equipment__item-big
+  width: 824px
+
+.home__block3
+  padding-bottom: 85px
+
+.home__block3__bg1
+  position: absolute
+  top: -30px
+  right: -125px
+
+.home__block3__bg2
+  position: absolute
+  top: 285px
+  right: 870px
+
+.home__block3__bg3
+  position: absolute
+  bottom: -50px
+  left: -60px
+
+.home__block3__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  width: 800px
+  margin-left: 20px
+  margin-top: 105px
+
+.home__block3__item
+  width: 315px
+  position: relative
+  z-index: 1
+  margin-bottom: 75px
+  .text
+    color: #59596e
+    font-size: 14px
+    line-height: 24px
+    padding-left: 13px
+  .title
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    font-size: 22px
+    font-weight: 600
+    margin-bottom: 8px
+  .title__image-wrapper
+    position: relative
+    width: 39px
+    height: 38px
+    margin-right: 5px
+    svg
+      max-width: 90%
+      max-height: 90%
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+.home__block4
+  padding-bottom: 92px
+
+.home__block4__flex
+  margin-top: 22px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.set-card
+  width: 440px
+  height: 610px
+  background-color: #f4f8fb
+  position: relative
+  .image
+    width: 100%
+    height: 250px
+    position: relative
+    overflow: hidden
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      min-width: 100%
+
+.set-card__body
+  padding: 28px 30px 12px 25px
+  .title
+    font-size: 22px
+    line-height: 30px
+    font-weight: 600
+    margin-bottom: 8px
+    padding-left: 10px
+  .set-params
+    padding-left: 10px
+    p
+      font-weight: 300
+      color: #45455b
+      font-size: 12px
+      line-height: 16px
+  .set-param
+    font-weight: 300
+    color: #45455b
+    font-size: 12px
+    margin-bottom: 10px
+    display: flex
+    justify-content: flex-start
+    .key
+      width: 80px
+  .set-menu
+    margin-top: 25px
+  .set-menu__title
+    font-weight: 300
+    color: #45455b
+    font-size: 12px
+    margin-bottom: 5px
+    padding-left: 10px
+  .chips
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+  .chip
+    display: inline-block
+    color: #45455b
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    font-family: 'Scada'
+    height: 23px
+    line-height: 23px
+    background-color: #ffffff
+    -webkit-border-radius: 11px
+    -moz-border-radius: 11px
+    border-radius: 11px
+    padding: 0 10px
+    margin-right: 5px
+    margin-bottom: 5px
+
+.set-card__footer
+  position: absolute
+  right: 0
+  left: 0
+  bottom: 57px
+  width: 100%
+  padding: 0 30px 0 35px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  .price span
+    display: block
+    font-weight: 600
+    font-size: 22px
+  .price-title
+    color: #45455b
+    font-size: 12px
+    font-weight: 300
+    margin-bottom: 6px
+  .btn
+    display: block
+    background-color: #0f0f15
+    transition: all .3s
+    width: 200px
+    height: 52px
+    text-align: center
+    line-height: 52px
+    color: #ffffff
+    text-transform: uppercase
+    font-size: 14px
+    font-weight: bold
+    font-family: 'Scada'
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    &:hover
+      opacity: .7
+
+.home__block4__bg
+  position: absolute
+  right: -253px
+  bottom: -290px
+
+.home__block5
+  padding-bottom: 95px
+
+.promo-banner
+  width: 100%
+  height: 420px
+  background-color: #fb648d
+  padding: 88px 0 80px 310px
+  color: #ffffff
+  position: relative
+  overflow: hidden
+  img
+    position: absolute
+    bottom: 0
+    right: 0
+  .section__title
+    text-align: left
+  p
+    margin-top: 12px
+    font-size: 16px
+    line-height: 24px
+    margin-bottom: 20px
+  .btn
+    display: block
+    margin-top: 33px
+    width: 256px
+    height: 52px
+    line-height: 52px
+    background-color: #e91e63
+    color: #ffffff
+    text-align: center
+    text-transform: uppercase
+    transition: all .3s
+    font-family: 'Scada'
+    font-weight: bold
+    font-size: 14px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    &:hover
+      opacity: .7
+
+.promo-banner__steps
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  .step
+    font-size: 50px
+    line-height: 40px
+    font-weight: 600
+    margin-right: 45px
+    position: relative
+    &::after
+      content: ''
+      width: 16px
+      height: 10px
+      background-image: url('/img/icons/arrow-right-pink.png')
+      -webkit-background-size: cover
+      background-size: cover
+      position: absolute
+      top: 22px
+      right: -30px
+    &:last-child::after
+      display: none
+    sup
+      font-size: 24px
+      margin-left: 5px
+
+.bg-percent
+  position: absolute
+  font-weight: 600
+  color: #f24679
+
+.bg-percent1
+  font-size: 250px
+  line-height: 250px
+  bottom: -20px
+  left: 15px
+
+.bg-percent2
+  font-size: 30px
+  line-height: 30px
+  top: 23px
+  left: 250px
+
+.bg-percent3
+  font-size: 45px
+  line-height: 45px
+  top: 7px
+  left: 535px
+
+.bg-percent4
+  font-size: 45px
+  line-height: 45px
+  bottom: 120px
+  right: 635px
+
+.bg-percent5
+  color: #f96153
+  font-size: 54px
+  line-height: 54px
+  top: 114px
+  right: 70px
+
+.home__block5__bg1
+  position: absolute
+  top: 60px
+  left: -40px
+  z-index: 2
+
+.home__block5__bg2
+  position: absolute
+  top: -45px
+  left: -150px
+
+.home__block5__bg3
+  position: absolute
+  top: 335px
+  left: -67px
+
+.home__block5__bg4
+  position: absolute
+  top: 265px
+  right: -60px
+  z-index: 2
+
+.home__block5__bg5
+  position: absolute
+  top: 345px
+  right: -80px
+
+.home__block5__bg6
+  position: absolute
+  bottom: -260px
+  left: 370px
+
+.home__block6
+  padding-bottom: 70px
+
+.home__block6__flex
+  margin-top: 30px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.item-card
+  width: 250px
+  min-height: 487px
+  position: relative
+  background-color: #ffffff
+  transition: all .3s
+  padding-top: 37px
+  &:hover
+    z-index: 2
+    box-shadow: 0px 0px 73px 0px rgba(143, 143, 156, 0.2)
+
+.item-card__img
+  display: block
+  width: 100%
+  height: auto
+  text-align: center
+  margin-bottom: 25px
+
+.item-card__body
+  padding: 0 27px
+  text-align: center
+  .title
+    font-size: 16px
+    font-weight: 600
+    line-height: 24px
+  .description
+    font-size: 12px
+    font-weight: 300
+    color: #45455b
+    line-height: 24px
+    margin-top: 5px
+
+.item-card__footer
+  position: absolute
+  right: 0
+  left: 0
+  bottom: 30px
+  padding: 0 27px
+  .price
+    text-align: center
+    font-size: 22px
+    font-weight: 600
+    margin-bottom: 16px
+
+.item-card__footer__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+
+.item-card__input
+  position: relative
+  input
+    width: 115px
+    height: 44px
+    -webkit-border-radius: 22px
+    -moz-border-radius: 22px
+    border-radius: 22px
+    border: 1px solid #e1e5ec
+    text-align: center
+    font-size: 15px
+  button
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 10px
+    height: 10px
+    z-index: 2
+    background-position: 50% 50%
+    background-repeat: no-repeat
+  .sub-btn
+    left: 15px
+    background-image: url('/img/home/block6/sub.png')
+  .add-btn
+    right: 15px
+    background-image: url('/img/home/block6/add.png')
+
+.add-to-basket
+  width: 65px
+  height: 44px
+  -webkit-border-radius: 22px
+  -moz-border-radius: 22px
+  border-radius: 22px
+  background-color: #000000
+  position: relative
+  transition: all .3s
+  img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    filter: invert(1)
+    width: 22px
+  &:hover
+    background-color: #e91e63
+
+footer
+  padding: 80px 0 30px 0
+  background-color: #0f0f15
+
+.footer__top-flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-start
+
+.footer__logo
+  margin-right: 175px
+
+.footer__links
+  li
+    color: #ffffff
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 24px
+    transition: all .3s
+    &:hover
+      opacity: .7
+    &:last-child
+      margin-bottom: 0
+  .mail-link
+    color: #e91e63
+    text-decoration: underline
+
+.social-link
+  position: relative
+  padding-left: 25px
+  .link__icon
+    width: 16px
+    height: 17px
+    position: absolute
+    left: 0
+    bottom: 0
+    display: block
+    img
+      position: absolute
+      transform: translate(-50%, -50%)
+      top: 50%
+      left: 50%
+
+.footer__col1
+  margin-right: 90px
+  width: 194px
+
+.footer__col2
+  margin-right: 95px
+  width: 193px
+
+.footer__col3
+  margin-right: 110px
+
+.footer__bottom-flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  margin-top: 70px
+  padding-left: 310px
+  li
+    color: #45455b
+    font-size: 13px
+    font-weight: 300
+    a
+      text-decoration: underline
+
+.footer__socials-mobile
+  display: none
+
+.social-link img, .footer__socials-mobile img
+  max-width: 16px
+  max-height: 17px
+
+.list__block1
+  padding: 45px 0 100px 0
+
+.list__filter-wrapper
+  width: 250px
+  h2
+    text-align: left
+    margin-bottom: 25px
+
+.list__block1__content
+  margin-top: 20px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.breadcrumbs
+  font-size: 12px
+  font-weight: 300
+  color: #adb0b2
+  a
+    transition: all .3s
+    color: #000000
+    &:hover
+      color: #adb0b2
+
+.list__filter
+  background-color: #f4f8fb
+  padding: 22px 0
+  margin-bottom: 2px
+
+.list__filter__header
+  padding: 0 12px 0 28px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  .title
+    font-size: 16px
+    font-weight: 600
+
+.category-radio
+  input
+    display: none
+  label
+    cursor: pointer
+    width: 100%
+    display: block
+    height: 36px
+    line-height: 36px
+    font-size: 14px
+    font-weight: 300
+    transition: all .3s
+    padding-left: 28px
+  input:checked + label
+    background-color: #ffffff
+    color: #e91e63
+
+.list__filter__number-inputs
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  padding: 0 22px
+  margin-bottom: 30px
+  position: relative
+  &::after
+    content: ''
+    width: 15px
+    height: 1px
+    background-color: #1d1c1c
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  input
+    width: 90px
+    height: 35px
+    -webkit-border-radius: 17px
+    -moz-border-radius: 17px
+    border-radius: 17px
+    background-color: #ffffff
+    border: 1px solid #e1e5ec
+    padding-left: 16px
+    font-size: 14px
+    font-weight: 300
+
+.list__filter__number-inputs-single
+  &::after
+    display: none
+
+.range-track
+  right: 0
+  left: 0
+  height: 3px
+  background-color: #cbd8e1
+  display: block
+  cursor: pointer
+  top: 50%
+  transform: translateY(-50%)
+  position: relative
+
+.range-track-active
+  background-color: #1d1c1c
+
+.range-slider
+  width: 10px
+  height: 10px
+  position: absolute
+  top: -6px
+  transform: translateX(-50%)
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  border-radius: 50%
+  background-color: #1d1c1c
+
+.range-label
+  display: none
+
+.filter-range
+  padding: 0 22px 28px 22px
+  position: relative
+
+.range-value-label
+  position: absolute
+  color: #45455b
+  opacity: .65
+  font-weight: 300
+  font-size: 14px
+  top: 15px
+
+.range-value-label-min
+  left: 22px
+
+.range-value-label-max
+  right: 22px
+
+.filter-close
+  background-color: #0f0f15
+  width: 24px
+  height: 24px
+  -webkit-border-radius: 50%
+  -moz-border-radius: 50%
+  border-radius: 50%
+  position: relative
+  cursor: pointer
+  &::after
+    content: ''
+    width: 6px
+    height: 6px
+    border-right: 1px solid #ffffff
+    border-top: 1px solid #ffffff
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -30%) rotate(-45deg)
+
+.filter-open
+  background-color: #ffffff
+  &::after
+    border-color: #787d8c
+    transform: translate(-50%, -70%) rotate(135deg)
+
+.list__filter__body
+  margin-top: 25px
+
+.list__filter__checkboxes
+  padding: 3px 0 0 27px
+  margin-right: 24px
+  overflow-y: scroll
+  height: 200px
+  &::-webkit-scrollbar
+    width: 3px
+    background-color: #cbd8e1
+  &::-webkit-scrollbar-thumb
+    background-color: #0f0f15
+    width: 3px
+    -webkit-border-radius: 2px
+    -moz-border-radius: 2px
+    border-radius: 2px
+
+.list__filter__checkbox
+  margin-bottom: 13px
+  &:last-child
+    margin-bottom: 0
+  input
+    display: none
+  label
+    cursor: pointer
+    padding-left: 26px
+    position: relative
+    color: #45455b
+    font-size: 13px
+    font-weight: 300
+    &::before
+      content: ''
+      width: 19px
+      height: 19px
+      background-color: #ffffff
+      border: 1px solid #e1e5ec
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      border-radius: 3px
+      position: absolute
+      left: 0
+      bottom: -2px
+  input:checked + label
+    &::before
+      background-image: url('/img/icons/check.png')
+      background-position: 50% 50%
+      background-repeat: no-repeat
+
+.list__filter__buttons
+  padding-left: 17px
+  padding-right: 17px
+  button
+    display: block
+    width: 100%
+    height: 52px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    font-size: 14px
+    font-family: 'Scada'
+    font-weight: bold
+    text-transform: uppercase
+    transition: all .3s
+  .apply
+    background-color: #0f0f15
+    color: #ffffff
+    margin-bottom: 10px
+    &:hover
+      opacity: .7
+  .clear
+    border: 1px solid #d1d5df
+    color: #000000
+    &:hover
+      background-color: #0f0f15
+      border-color: #0f0f15
+      color: #ffffff
+
+.list__items
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  width: calc(100% + 38px)
+  .item-card
+    margin-right: 37px
+
+.list__items-wrapper
+  width: 1110px
+  .load-more
+    display: block
+    width: 100%
+    height: 52px
+    background-color: #f4f8fb
+    margin-top: 20px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    text-transform: uppercase
+    font-family: 'Scada'
+    font-size: 14px
+    font-weight: bold
+    transition: all .3s
+    margin-bottom: 90px
+    &:hover
+      opacity: .7
+
+.list__items__head
+  height: 40px
+  position: relative
+  top: -20px
+  margin-bottom: 25px
+
+.promo-banner-small
+  padding-left: 112px
+  .bg-percent1
+    display: none
+
+.list__items__head
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-end
+
+.list__chips
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  .chip
+    background-color: #0f0f15
+    margin-right: 8px
+    -webkit-border-radius: 3px
+    -moz-border-radius: 3px
+    border-radius: 3px
+    position: relative
+    height: 27px
+    padding: 6px 25px 0 10px
+    span
+      color: #fefefe
+      font-size: 12px
+      font-weight: 300
+    button
+      color: #fefefe
+      position: absolute
+      top: 5px
+      right: 8px
+      font-size: 20px
+
+.list__detail
+  padding: 45px 0 75px 0
+
+.detail__flex
+  margin-top: 40px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.detail__left
+  margin-top: 25px
+  width: 250px
+
+.detail__left__item
+  margin-bottom: 2px
+  padding: 20px 45px 20px 38px
+  background-color: #f4f8fb
+  .set-link
+    color: #59596e
+    text-decoration: underline
+    font-size: 12px
+    line-height: 19px
+    &:hover
+      text-decoration: none
+  .title
+    font-size: 14px
+    font-weight: 600
+    margin-bottom: 12px
+
+.detail__left__chips
+  margin-left: -5px
+  display: flex
+  flex-flow: column wrap
+  align-items: flex-start
+  .chip
+    display: inline-block
+    padding: 0 8px
+    height: 23px
+    line-height: 23px
+    margin-bottom: 7px
+    -webkit-border-radius: 11px
+    -moz-border-radius: 11px
+    border-radius: 11px
+    font-family: 'Scada'
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    color: #45455b
+    background-color: #ffffff
+    &:last-child
+      margin-bottom: 0
+  .chip-green
+    color: #ffffff
+    background-color: #35a345
+  .chip-red
+    color: #ffffff
+    background-color: #d44242
+
+.detail__images
+  width: 475px
+
+.detail__image-wrapper
+  width: 100%
+  height: 475px
+  margin-bottom: 10px
+  position: relative
+
+.detail__image
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 100%
+
+.detail__image-min
+  cursor: pointer
+  width: 95px
+  height: 95px
+  position: relative
+  transition: all .3s
+  &:hover
+    box-shadow: 0px 0px 73px 0px rgba(143, 143, 156, 0.2)
+    z-index: 2
+    background-color: #ffffff
+  img
+    max-width: 70px
+    max-height: 70px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.icon-arrow
+  display: block
+  width: 16px
+  height: 10px
+  -webkit-background-size: cover
+  background-size: cover
+  filter: invert(1)
+  background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAbCAQAAACg7NXYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfkBBcROgk43pVIAAAA4UlEQVRIx9XVsQrCMBQF0JtSXAo6SEFodXLUf5Cimw7+hpMf5OZfOAmC6KgVcajg0E13wQ7XwVoUq0P6MviWFwg5XEJ4ATSKNqdMuGFT5/Q3dMBHxfmspaU6afcwF0tLh1vyd1od1mVomj3Rl2MPGRvJsT6jv2U9E2xIF1AsY4RaQbeBYbbeIVCcoScU+VlzxQS2MAoLC2kSS8UqxqgXZDx0s/URHYFgBt7q2wwwQMYseo05pMQANEFWTJBrabLEVUae2RIgAfZfyPbnvt4XfU37BYEKRXICtDjhjfu8lABwB674FTL27ViSAAAAAElFTkSuQmCC')
+
+.detail__carousel
+  width: 290px
+  margin: 0 auto
+  .owl-stage-outer
+    overflow: visible
+  .owl-item
+    opacity: 0
+    transition: all .3s
+  .owl-item.active
+    opacity: 1
+  .owl-dots
+    display: none
+  .owl-prev, .owl-next
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+  .owl-prev
+    transform: translateY(-50%) scale(-1)
+    left: -27px
+  .owl-next
+    right: -27px
+  .disabled
+    opacity: .5
+
+.detail__description
+  width: 500px
+  padding-top: 45px
+  .title
+    font-size: 30px
+    line-height: 38px
+    font-weight: 600
+    margin-bottom: 8px
+  p
+    font-size: 14px
+    line-height: 24px
+    margin-bottom: 20px
+  .price
+    margin: 70px 0 40px 0
+    font-size: 30px
+    font-weight: 600
+  .detail-input
+    width: 306px
+  .add-to-basket
+    background-color: #e91e63
+    color: #ffffff
+    text-transform: uppercase
+    font-family: "Scada"
+    font-size: 14px
+    font-weight: bold
+    width: 170px
+    img
+      position: relative
+      transform: none
+      top: 2px
+      left: 0
+      margin-right: 12px
+    &:hover
+      background-color: #000000
+
+.detail__table
+  width: 307px
+  .row
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+    align-items: flex-end
+    margin-bottom: 15px
+    &:last-child
+      margin-bottom: 0
+  .dots
+    border-bottom: 1px dotted #1d1c1c
+    height: 1px
+    position: relative
+    top: -3px
+    flex-grow: 1
+  .key
+    font-size: 14px
+    margin-right: 10px
+  .value
+    font-size: 16px
+    margin-left: 10px
+    min-width: 53px
+
+.recomended-block
+  padding-bottom: 100px
+
+.equipment__list__head
+  height: 80px
+  top: -10px
+
+.list__items
+  .set-card
+    height: 550px
+    width: 350px
+    margin-right: 32px
+    margin-bottom: 32px
+    .image
+      height: 200px
+    .set-card__footer
+      bottom: 50px
+      .btn
+        width: 170px
+    .set-card__body
+      padding: 27px 30px 0 16px
+
+.sets__detail
+  h2
+    text-align: left
+    margin: 12px 0 20px 0
+
+.sets__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+
+.set__table
+  width: 1010px
+
+.set__table__title
+  height: 63px
+  background-color: #f4f8fb
+  position: relative
+  padding-left: 28px
+  margin-bottom: 2px
+  .title
+    line-height: 63px
+    font-size: 22px
+    font-weight: 600
+
+.set__table__header
+  margin-bottom: 35px
+  height: 56px
+  padding-left: 28px
+  padding-top: 20px
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  background-color: #f4f8fb
+  span
+    font-size: 16px
+
+.set__table__col1
+  width: 175px
+
+.set__table__col2
+  width: 340px
+
+.set__table__col3
+  width: 125px
+
+.set__table__col4
+  width: 160px
+
+.set__table__col5
+  width: 130px
+
+.set__table__category__header
+  padding-left: 28px
+  padding-bottom: 10px
+  border-bottom: 2px solid #f4f8fb
+  .title
+    font-size: 20px
+
+.set__table__category
+  border-bottom: 2px solid #f4f8fb
+  padding-bottom: 20px
+  margin-bottom: 22px
+
+.set__table__dish
+  margin-top: 20px
+  padding-left: 28px
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  position: relative
+
+.set__table__dish__image
+  img
+    max-width: 123px
+    height: 123px
+
+.set__table__dish__desc
+  .title
+    margin: 8px 0
+    font-size: 16px
+    font-weight: 600
+    line-height: 21px
+    height: 40px
+    position: relative
+    span
+      position: absolute
+      bottom: 0
+
+.set__table__dish__desc__item
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  width: 240px
+  align-items: flex-end
+  margin-bottom: 5px
+  .key
+    font-size: 14px
+    margin-right: 10px
+  .dots
+    border-bottom: 1px dotted #1d1c1c
+    height: 1px
+    position: relative
+    top: -3px
+    flex-grow: 1
+  .value
+    font-size: 16px
+    margin-left: 10px
+    min-width: 60px
+
+.set__table__dish__price
+  padding-top: 50px
+  span
+    font-size: 22px
+    font-weight: 600
+
+.set__table__dish__quantity
+  padding-top: 40px
+  .item-card__input
+    width: 115px
+
+.remove-btn
+  position: absolute
+  right: 26px
+  top: 49px
+  transition: all .3s
+  &:hover
+    opacity: .7
+  .remove-icon
+    -webkit-background-size: cover
+    background-size: cover
+    width: 16px
+    height: 18px
+
+.remove-icon
+  display: block
+  background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAA2CAMAAAC2heqoAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAACHFBMVEUAAAAdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwAAADpjKG/AAAAsnRSTlMAQJDo0NmAMOD48PPyEJse+oMz7OdvRQH+1VxXE8NKaSauN3wvbn2LKSBxSzgljnBSD7WJEqNiYByoXndWKJxzZOvHSXs1j4U9iEKYlFByqiu0oV9mvRmisGtZ0QaNB754TOT0yvfh7deRCs1boCO7RBYxgsQJlh23Df2nq9S5nubL092BwHVPurasBGgXrciaJNs7hALaY00yFZ9aJzx0OiqGDMyvLFhGQZlhBYfe+wv5075GqwAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfkBBoXFRC4TqGKAAADBklEQVRIx8WV6V9MYRTHb6VpGkoJJWkjpM1SUfYKRfbKJFshohQhKm0oW7IrW/Yl+/kL/c7c585z7nyaiTc5b35n+97Pc5/z3Ocahs2CyNeCjYA2OUDIFMtC/w5weKOw/wM4bRaClnCXZVMRTbM3OA36R5sEIAIWCWd64N3ASKK4NcITRQOYERiIIZqpo1kAZgfsj40jmqPDeABzAwIJ6Jinw0SESQGBZHSk6DAV4Xx2FqQtXLQYmu5wOII4EexYksGaiY5IDWQhzGYnB85ScUKWQZdzIQPOCg3kIsxjJx/OSgGsghZwoRDOarHEOPWgNcinCWAtdB0X1sPZIICNREWsxciXCGATdDMXtqi1ijmGspYiXyaArdZp3wanVABFRDGs/AGUC2A7dAcXdsLZJYDdRHGs6cjvEcBeaAUXKuFUCWAf4lw1ULcAqqH7uaEGzgEBHEScBT0EPSyAI9BabqgjOionX4JCKjtRRMcEwJvjmfhxonoJJKFQzM4JopMCaICGQU9BT0uAB9bIjpOoTgBN0DNq4s0SaFET5pdzCSAFelZtd4EEziHRys55/mo10Ay9oB54UQJtamDGJTiXNYCBtltLjpYAv1QHO53mgCzgirlCz6bkSMAIJ+pi7UYlWQP1RE5r2+NtQA9RL2uweX9YgIuoj9PZiBNtQB/RVdZr5qQsoF0d+zzEmTbgOm5d1n5UBrwAv9oNTt9UR0fbLWRuQ++Yi1XAIOQul4fgJNiAe8gMQhvNC0cB9yFNXH6A4x9rA8pQ4vtlANrvBXjADeqIxdj6PWt/qEbc6gVYHiH7GPrEDjxFahg6Qp6flAKG1eXyjNRuaeOl5BvmlfbcC7yAVCP70rrPtL1CahRaBe30AhWQQmRfWxedtjdIvYW+e1/5AYfmo9vt/mQYnzu7hr4gW2tdpdp4x8cMf/ZV3W/CvplL8WOj4/wO8Euu9At8H+eH84Ooxi8wBqDFJ9drfv3jG5+0EZ9cF3Iuf/YTxTYfoGOiH/ovH6B8gv7fvstsnQDosRr/ACuPfQKOkzBRAAAAAElFTkSuQmCC')
+
+.set__category__stats
+  margin: 0 100px 0 auto
+  width: 265px
+  .item
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+    margin-bottom: 3px
+    align-items: center
+    .key
+      width: 120px
+      text-align: right
+      font-size: 14px
+    .value
+      font-size: 16px
+      background-color: #f4f8fb
+      height: 28px
+      line-height: 28px
+      padding: 0 7px
+
+.promo-banner-xsmall
+  margin-top: 85px
+  padding-left: 75px
+  h2, p
+    position: relative
+    z-index: 2
+  .bg-percent1
+    display: none
+  img
+    right: -40px
+  .bg-percent2
+    top: 30px
+    left: 20px
+  .bg-percent3
+    left: 315px
+  .bg-percent4
+    right: 595px
+
+.set__menu
+  width: 350px
+
+.set__menu__block
+  background-color: #f4f8fb
+  padding: 30px 25px
+  margin-bottom: 2px
+  .add-to-basket
+    background-color: #e91e63
+    color: #ffffff
+    text-transform: uppercase
+    font-family: "Scada"
+    font-size: 14px
+    font-weight: bold
+    width: 100%
+    img
+      position: relative
+      transform: none
+      top: 2px
+      left: 0
+      margin-right: 12px
+    &:hover
+      background-color: #000000
+  .title
+    font-size: 16px
+    font-weight: 600
+  .select
+    margin-top: 10px
+    width: 100%
+  .chip
+    display: inline-block
+    padding: 0 8px
+    height: 23px
+    line-height: 23px
+    margin-bottom: 7px
+    -webkit-border-radius: 11px
+    -moz-border-radius: 11px
+    border-radius: 11px
+    font-family: 'Scada'
+    font-size: 12px
+    font-weight: bold
+    text-transform: uppercase
+    color: #45455b
+    background-color: #ffffff
+    &:last-child
+      margin-bottom: 0
+  .chip-green
+    color: #ffffff
+    background-color: #35a345
+  .chip-wrapper
+    margin: 25px 0 20px 0
+
+.set__menu__persons__header
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  .item-card__input input
+    background-color: #ffffff
+
+.set__menu__persons__recommend
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-end
+  .key
+    width: 220px
+    font-style: italic
+    font-weight: 300
+    font-size: 14px
+    line-height: 20px
+  .value
+    color: #7c7c8e
+    font-weight: 500
+    font-size: 14px
+    line-height: 20px
+
+.set__menu__title
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  .value
+    color: #7c7c8e
+    font-weight: 500
+    font-size: 14px
+    line-height: 20px
+  .price
+    color: #000000
+    font-weight: 600
+    font-size: 22px
+  .price-min
+    font-weight: 500
+    font-size: 14px
+
+.tableware__stats
+  width: 370px
+  .key.key
+    width: 230px
+
+.tableware__options
+  .value
+    min-width: 88px
+
+.basket__steps
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-bottom: 40px
+  .step
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: center
+    margin-right: 95px
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+      right: -78px
+      height: 1px
+      width: 60px
+      background-color: #adb0b2
+    &:last-child
+      margin-right: 0
+      &::after
+        display: none
+    .num
+      width: 33px
+      height: 33px
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      border: 1px solid #adb0b2
+      position: relative
+      margin-right: 9px
+      span
+        color: #adb0b2
+        font-weight: 600
+        font-size: 15px
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    .title
+      font-size: 20px
+      color: #adb0b2
+  .step.active
+    .num
+      border-color: #1d1c1c
+      background-color: #1d1c1c
+      span
+        color: #ffffff
+    .title
+      color: #1d1c1c
+
+.basket__step1__flex
+  .set__table__category
+    border-bottom: none
+    margin-top: 15px
+
+.basket__step1__item
+  margin-bottom: 45px
+  .set__table__dish
+    align-items: center
+  .set__table__dish__price
+    padding-top: 0
+  .set__table__dish__quantity
+    padding-top: 0
+  .set__table__dish__desc .title
+    height: auto
+    span
+      position: static
+  .remove-btn
+    right: 80px
+    top: 47%
+    transform: translateY(-50%)
+
+.set__table__col6
+  width: 260px
+  padding-right: 25px
+
+.basket-next-btn.basket-next-btn
+  line-height: 44px
+  img
+    height: 10px
+    filter: none
+    width: 16px
+    top: -1px
+    margin-left: 5px
+
+.basket-next-btn:disabled
+  background-color: #777777
+  &:hover
+    background-color: #777777
+
+.basket__step1__menu__item
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  margin-top: 15px
+  font-size: 14px
+  align-items: center
+  .value
+    font-weight: 500
+    text-align: right
+
+.basket__next-step
+  text-align: center
+  a
+    display: inline-block
+    margin-top: 12px
+    .text
+      font-weight: 300
+      color: #59596e
+      font-size: 13px
+      position: relative
+      &::after
+        content: ''
+        position: absolute
+        bottom: 0
+        right: 0
+        left: 0
+        height: 1px
+        background-color: #59596e
+        transition: all .3s
+    &:hover
+      .text::after
+        opacity: 0
+  .download-icon
+    margin-right: 8px
+    width: 15px
+    height: 15px
+    display: inline-block
+    -webkit-background-size: cover
+    background-size: cover
+    background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABZVBMVEUAAAD0+Pvu8vXu8vX0+Pv0+Pvy9vnz9/r0+Pv0+Pvc3+XR1Nv0+Pv0+PvGydLy9vnx9fjt8fX0+Pv0+Pvt8fXx9fju8vXz9/ry9vnJzNTv8/f0+Pvv8vbO0dnw9Pf0+Pvu8vW/wcrHytLt8fXw9Pjv8/f0+Pvv8vbu8vX0+Pv0+PvFx9D0+Pv0+Pv0+Pv0+Pvy9vny9vnw9Pfy9vnv8/f0+Pvu8vX0+Pvr7/Pw9Pf0+Pv0+Pvu8vXq7vL0+Pv0+Pvr7/Pl6e70+Pvv8/f0+Pvo7PDw9Pfn6u/0+Pv0+Pv0+Pv0+PvR1NvS1dzz9/rz9/rt8fTKzdXMz9ft8fTu8vXt8fT0+Puvsbx5eYunqbVZWW66vcacnquCg5OCg5SYmqiytb9bW3BdXXGtsLutr7p6e4yOkJ+Njp23usRhYXWUlaR0dYeWmKa2uMNyc4V/gJB8fY5sbYDz9/p2d4l3eIl1docAAAD8+fStAAAAVnRSTlMAP9/lSxz5/Chr+Pp5gPpi97sfGLX26G39/Osk5Pv8VLH8+7n8/FqN+6Sc/gUNDDT6Y5Vg7TXcGfqbARbb+UlA+fdQhv74jfUbSod8/Pv+/cf8/L/Kw6IdUHcAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH5AQbEDs61QEQkAAAATxJREFUSMft0EdbwkAQgOFRCIkFKzZEsRMVe68Ue8W66NgLKhY0Kv/fgJtAwj5kjxz4DnOY5z3MLgCjklJiswNngiN6di5KnLqsHBErKjm1s0rVF86iLurC1tW2mto6k653NTQ2sbC9+fKqxd1q0IKn7fqm3cvQHbeId50prmvB03WP+NDN0K4oUq7pf4yPLO3tiVFONcWx3j7W4T6Z8v60HqBY9rE/ReMkrUl+nOGDKW2Fdf6kjmdLrHEtC2zkLOyXhtjchIclP8CIm4yOsXhMHs9eTzjI5BRMv8RfxZlc/jY7N5+1XBDf4x+LQBKIS8um2z/xy4ghEERMECAKYihsfMrK6tr3ugFDYANRYWvY3BJMm3w6t8LU22GrdjJ6N2Tdnq45U/X+D7f+jcDBYVLhK3l0DMIJ4SxyKvwBAbngsYDbZWsAAAAASUVORK5CYII=')
+
+.basket__step2__flex
+  margin-top: 33px
+  display: flex
+  flex-flow: row wrap
+  padding-left: 28px
+  justify-content: space-between
+  align-items: flex-start
+
+.basket__step2__info
+  width: 390px
+  height: 144px
+  border: 3px solid #f4f8fb
+  padding: 20px 50px 0 54px
+  position: relative
+  &::before
+    content: ''
+    background-image: url('/img/icons/info.png')
+    width: 19px
+    height: 19px
+    -webkit-background-size: cover
+    background-size: cover
+    position: absolute
+    top: 18px
+    left: 27px
+  p
+    font-size: 12px
+    font-weight: 300
+    line-height: 19px
+    font-style: italic
+
+.basket__step2__item
+  margin-bottom: 25px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  width: 450px
+  &:last-child
+    margin-bottom: 0
+  .price
+    min-width: 100px
+    text-align: right
+    font-size: 20px
+    font-weight: 600
+  .input-wrapper
+    width: 125px
+    input
+      display: none
+  label
+    cursor: pointer
+    padding-left: 35px
+    position: relative
+    color: #45455b
+    font-size: 16px
+    font-weight: 600
+    &::before
+      content: ''
+      width: 19px
+      height: 19px
+      background-color: #ffffff
+      border: 1px solid #e1e5ec
+      -webkit-border-radius: 3px
+      -moz-border-radius: 3px
+      border-radius: 3px
+      position: absolute
+      left: 0
+      bottom: -2px
+  input:checked + label
+    &::before
+      background-image: url('/img/icons/check.png')
+      background-position: 50% 50%
+      background-repeat: no-repeat
+
+.react-calendar
+  width: 300px
+  background-color: #f4f8fb
+  -webkit-border-radius: 20px
+  -moz-border-radius: 20px
+  border-radius: 20px
+  border: 1px solid #e1e5ec
+
+.react-calendar__navigation
+  justify-content: flex-start
+  height: 48px
+  border-bottom: 1px solid #e1e5ec
+  position: relative
+
+.react-calendar__navigation__label
+  flex-grow: 0 !important
+  padding-left: 18px
+  font-size: 16px
+
+.react-calendar__navigation__next2-button
+  display: none
+
+.react-calendar__navigation__prev2-button
+  display: none
+
+.react-calendar__navigation__arrow
+  position: absolute
+  top: 50%
+  transform: translateY(-50%)
+  img
+    width: 16px
+    height: 10px
+    filter: invert(1)
+
+.react-calendar__navigation__next-button
+  right: 20px
+
+.react-calendar__navigation__prev-button
+  right: 46px
+  img
+    transform: scale(-1)
+
+.react-calendar__month-view__weekdays__weekday
+  text-align: center
+  height: 30px
+  margin-top: 13px
+  abbr
+    text-decoration: none
+    font-size: 13px
+    font-weight: 300
+
+.react-calendar__tile
+  text-align: center
+  overflow: visible !important
+  &:disabled
+    abbr
+      opacity: .5
+  abbr
+    padding-top: 7px
+    display: inline-block
+    width: 27px
+    height: 27px
+    text-align: center
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+
+.react-calendar__month-view__days
+  padding-bottom: 10px
+
+.react-calendar__tile--active
+  abbr
+    background-color: #ffffff
+    box-shadow: 0px 8px 21.36px 2.64px rgba(143, 143, 156, 0.2)
+
+.react-calendar__tile--now
+  abbr
+    color: #e91e63
+
+.basket__step3__item__title
+  width: 300px
+  border-bottom: 3px solid #f4f8fb
+  padding-bottom: 10px
+  padding-left: 18px
+  font-size: 20px
+  margin-bottom: 30px
+
+.basket__step3__calendar__date
+  margin-top: 18px
+  width: 300px
+  border-bottom: 1px solid #f4f8fb
+  padding-bottom: 5px
+  padding-left: 28px
+  display: flex
+  font-size: 14px
+  font-weight: 600
+  flex-flow: row wrap
+  justify-content: space-between
+  .key
+    width: 120px
+  .value
+    width: 150px
+
+.basket__step3__flex
+  padding-right: 155px
+
+.basket__form
+  width: 300px
+
+.input-wrap.basket-input
+  margin-bottom: 20px
+  position: relative
+  input
+    width: 100%
+    height: 52px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    border: 1px solid #e1e5ec
+    padding-left: 28px
+    font-size: 14px
+    padding-top: 7px
+  label
+    transition: all .3s
+    font-size: 14px
+    position: absolute
+    left: 28px
+    top: 50%
+    transform: translateY(-50%)
+  input[value] + label
+    font-size: 12px
+    color: #adb0b2
+    top: 6px
+    transform: none
+  input[value=""] + label
+    font-size: 14px
+    position: absolute
+    left: 28px
+    top: 50%
+    transform: translateY(-50%)
+  input:focus + label
+    font-size: 12px
+    color: #adb0b2
+    top: 6px
+    transform: none
+
+.input-wrap.basket-input.success
+  &::after
+    content: ''
+    width: 20px
+    height: 20px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: -35px
+    background-image: url('/img/icons/success.png')
+
+.input-wrap.basket-input.error
+  input
+    border-color: #ef5350
+  &::after
+    content: ''
+    width: 20px
+    height: 20px
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    right: -35px
+    background-image: url('/img/icons/error.png')
+
+.map
+  width: 715px
+  height: 314px
+
+.map-wrapper
+  width: 715px
+  height: 314px
+  position: relative
+  .lds-spinner
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.address__table
+  .basket__step3__item__title
+    width: 100%
+    margin-top: 19px
+  .basket__step5__item__title
+    width: 600px
+    padding-left: 28px
+
+.address_form
+  margin-bottom: 25px
+  padding: 0 100px 0 28px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  .input-wrap:nth-child(1), .input-wrap:nth-child(2)
+    width: 300px
+  .input-wrap:nth-child(3), .input-wrap:nth-child(4)
+    width: 110px
+  .input-wrap.basket-input.success::after
+    display: none
+  .input-wrap.basket-input.error
+    input
+      border-color: #e1e5ec
+    &::after
+      display: none
+
+.address-alert
+  margin: 0 0 45px 0
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  padding-left: 28px
+  align-items: center
+  .circle
+    width: 32px
+    height: 32px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+  .circle-blue
+    background-color: #82cdff
+  .circle-red
+    background-color: #ed4543
+  .circle-orange
+    background-color: #ff931e
+  .line
+    height: 1px
+    width: 10px
+    background-color: #000
+    margin: 0 12px 0 10px
+  p
+    font-size: 14px
+    line-height: 21px
+
+.map__flex
+  display: flex
+  flex-flow: row wrap
+  align-items: flex-start
+  justify-content: space-between
+
+.map__prices
+  width: 240px
+  .title
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 18px
+
+.map__prices__row
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  font-size: 16px
+  font-weight: normal
+  margin-bottom: 20px
+  .col1
+    width: 100px
+  .circle
+    width: 32px
+    height: 32px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+  .circle-blue
+    background-color: #82cdff
+  .circle-red
+    background-color: #ed4543
+  .circle-orange
+    background-color: #ff931e
+
+.map__prices__head
+  font-size: 14px
+  font-weight: 300
+
+.delivery__title
+  height: 138px
+  padding-top: 23px
+  .title
+    line-height: 22px
+  p
+    margin-top: 15px
+    font-size: 14px
+    line-height: 21px
+
+.basket__step5__title
+  padding-top: 30px
+
+.address__buttons
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-top: 15px
+
+.address-btn
+  width: 138px
+  height: 44px
+  border: 1px solid #1d1c1c
+  -webkit-border-radius: 22px
+  -moz-border-radius: 22px
+  border-radius: 22px
+  text-transform: uppercase
+  margin-right: 15px
+  font-size: 14px
+  font-family: 'Scada'
+  font-weight: bold
+
+.address-btn.active
+  background-color: #1d1c1c
+  color: #ffffff
+
+.pickup__addresses
+  min-height: 410px
+  padding-left: 28px
+
+.pickup__address
+  margin-bottom: 25px
+  input
+    display: none
+  label
+    position: relative
+    padding-left: 40px
+    font-size: 16px
+    font-weight: 600
+    cursor: pointer
+    &::before
+      content: ''
+      width: 19px
+      height: 19px
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      border: 1px solid #adb0b2
+      position: absolute
+      top: -2px
+      left: 0
+    &::after
+      content: ''
+      width: 5px
+      height: 5px
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      background-color: #1d1c1c
+      position: absolute
+      left: 8px
+      top: 5px
+      opacity: 0
+  input:checked + label::after
+    opacity: 1
+
+.basket__step5__items
+  width: 600px
+  padding-left: 28px
+  min-height: 410px
+
+.basket__step5__item
+  margin-bottom: 10px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-end
+  .key
+    font-size: 16px
+    font-weight: 600
+    margin-right: 10px
+  .dots
+    position: relative
+    bottom: 3px
+    flex-grow: 1
+    border-bottom: 1px dotted #1d1c1c
+  .value
+    width: 305px
+    font-size: 14px
+    font-weight: 300
+    margin-left: 10px
+
+.set__table__mobile-group
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+
+.equipment-remove
+  margin-left: 0 !important
+
+.about-page
+  padding: 45px 0 105px 0
+
+.about__flex
+  margin-top: 40px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+
+.about__menu-wrapper
+  position: relative
+  .menu__bg
+    position: absolute
+    z-index: 1
+    bottom: -90px
+    right: 70px
+
+.about__menu
+  padding: 17px 0
+  position: relative
+  z-index: 2
+  width: 250px
+  background-color: #f4f8fb
+  .link
+    cursor: pointer
+    display: block
+    width: 100%
+    display: block
+    height: 36px
+    line-height: 36px
+    font-size: 14px
+    font-weight: 300
+    transition: all .3s
+    padding-left: 28px
+    transition: all .3s
+    &:hover
+      background-color: #ffffff
+      color: #e91e63
+  .link.active
+    background-color: #ffffff
+    color: #e91e63
+    box-shadow: 0px 0px 73px 0px rgba(143, 143, 156, 0.2)
+
+.about__content-page
+  width: 1108px
+
+.about-us__wrapper
+  width: 100%
+  .block2
+    padding: 75px 123px 45px 123px
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+    position: relative
+    .bg
+      position: absolute
+      top: 180px
+      right: 450px
+  .block1
+    text-align: center
+    h1
+      font-size: 40px
+      line-height: 52px
+      font-weight: 600
+      margin-bottom: 20px
+    .text
+      color: #59596e
+      font-size: 14px
+      line-height: 24px
+      margin-bottom: 42px
+
+.about-us__carousel
+  width: 100%
+  .img
+    width: 100%
+    height: 425px
+    position: relative
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 100%
+  .owl-next, .owl-prev
+    position: absolute
+    bottom: 25px
+    width: 40px
+    height: 40px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #ffffff
+    transition: all .3s
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      filter: invert(1)
+  .owl-next
+    right: 25px
+  .owl-prev
+    right: 88px
+    img
+      transform: translate(-50%, -50%) scale(-1)
+
+.block2__item
+  margin-bottom: 55px
+  position: relative
+  z-index: 2
+  &:nth-child(2), &:nth-child(4)
+    width: 352px
+  &:nth-child(3), &:nth-child(5)
+    width: 290px
+  .icon-wrapper
+    width: 41px
+    height: 38px
+    position: relative
+    svg
+      position: absolute
+      left: 0
+      top: 50%
+      transform: translateY(-50%)
+      max-width: 100%
+      max-height: 100%
+  .title
+    margin-bottom: 10px
+    margin-left: -17px
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    span
+      margin-left: 6px
+      font-size: 22px
+      font-weight: 600
+      position: relative
+      top: 3px
+  .text
+    font-size: 14px
+    line-height: 24px
+    color: #59596e
+
+.block3__block
+  padding-left: 327px
+  position: relative
+  margin-top: 75px
+  padding-top: 7px
+  .line
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translateX(-50%)
+
+.block3__item
+  margin-bottom: 111px
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  &:nth-child(3)
+    margin-bottom: 112px
+  &:nth-child(4)
+    margin-bottom: 113px
+  &:nth-child(6)
+    margin-bottom: 112px
+  .title
+    position: relative
+    .text
+      position: relative
+      font-size: 16px
+      font-weight: 600
+      z-index: 2
+    .num
+      font-size: 120px
+      line-height: 30px
+      font-weight: 600
+      color: #e3eaf0
+      position: absolute
+      z-index: 1
+      bottom: 26px
+      left: 24px
+      transform: translateX(-100%)
+  .icon-wrapper
+    width: 48px
+    height: 48px
+    background-color: #e91e63
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    position: relative
+    svg
+      max-width: 30px
+      max-height: 23px
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+.block3__item-left
+  width: 305px
+  justify-content: space-between
+  .icon-wrapper
+    margin-right: 55px
+
+.block3__item-right
+  padding-left: 202px
+  .icon-wrapper
+    margin-right: 103px
+
+.block3__bg1
+  position: absolute
+  top: -320px
+  left: -160px
+
+.block3__bg2
+  position: absolute
+  top: 255px
+  right: -490px
+
+.block3__bg3
+  position: absolute
+  top: 740px
+  left: -30px
+
+.about-us__wrapper
+  .block3
+    position: relative
+  .block4
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+
+.block4__left
+  width: 350px
+  display: flex
+  flex-flow: column wrap
+  justify-content: space-between
+  padding-top: 40px
+  h2
+    text-align: left
+  .img
+    width: 165px
+    height: 195px
+    position: relative
+    overflow: hidden
+    background-color: #8baddc
+    img
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      max-width: 100%
+      max-height: 100%
+
+.block4__right
+  width: 738px
+  position: relative
+  .owl-carousel
+    position: relative
+    z-index: 2
+  .bg
+    position: absolute
+    z-index: 3
+    top: -50px
+    right: -58px
+  .owl-next, .owl-prev
+    position: absolute
+    bottom: 25px
+    width: 40px
+    height: 40px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #ffffff
+    transition: all .3s
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      filter: invert(1)
+  .owl-next
+    right: 25px
+  .owl-prev
+    right: 88px
+    img
+      transform: translate(-50%, -50%) scale(-1)
+
+.block4__slide
+  width: 100%
+  height: 518px
+  display: flex
+  justify-content: space-between
+  background-color: #f4f8fb
+  .img
+    height: 100%
+    width: 375px
+    position: relative
+    overflow: hidden
+    background-color: #8baddc
+    img
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+      max-width: 100%
+      max-height: 100%
+
+.block4__slide__text
+  width: 315px
+  padding-top: 133px
+  padding-right: 45px
+  .title
+    font-size: 16px
+    font-weight: 600
+  .job
+    margin: 10px 0 20px 0
+    font-weight: 300
+    color: #59596e
+    font-size: 14px
+  .text
+    font-size: 14px
+    line-height: 24px
+
+.about-us__wrapper .block5
+  padding-top: 85px
+  padding-bottom: 100px
+
+.block5__slider
+  margin: 50px auto 0 auto
+  width: 1038px
+  .owl-next, .owl-prev
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 40px
+    height: 40px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #e7eaef
+    transition: all .3s
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      filter: invert(1)
+  .owl-next
+    right: -60px
+  .owl-prev
+    left: -60px
+    img
+      transform: translate(-50%, -50%) scale(-1)
+
+.block5__item
+  position: relative
+  overflow: hidden
+  width: 509px
+  height: 285px
+  cursor: pointer
+  img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    transition: all .3s
+  svg
+    width: 45px
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 2
+  &:hover
+    img
+      filter: brightness(0.7)
+
+.about-us__wrapper .block6
+  position: relative
+  .home__block5__bg4
+    z-index: 0
+    top: 495px
+  .home__block5__bg3
+    top: 555px
+  .home__block5__bg5
+    top: 525px
+
+.about-banner
+  height: 605px
+  padding-left: 95px
+  .bg-percent2
+    left: 30px
+  .bg-percent3
+    top: 17px
+    left: 315px
+  .bg-percent4
+    bottom: 450px
+    right: 555px
+  img
+    width: 988px
+    right: -250px
+  p
+    position: relative
+    z-index: 2
+  .bg-percent5
+    display: none
+  .about-banner__steps
+    width: 365px
+    position: relative
+    z-index: 2
+
+.about-banner__step
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 25px
+  &:last-child
+    margin-bottom: 0
+  .text
+    width: 192px
+    font-size: 16px
+    line-height: 24px
+  .step
+    font-size: 50px
+    line-height: 40px
+    font-weight: 600
+    width: 95px
+    position: relative
+    &::after
+      content: ''
+      width: 16px
+      height: 10px
+      background-image: url('/img/icons/arrow-right-pink.png')
+      -webkit-background-size: cover
+      background-size: cover
+      position: absolute
+      top: 22px
+      right: -35px
+    &:last-child::after
+      display: none
+    sup
+      font-size: 24px
+      margin-left: 5px
+
+.reviews-wrapper
+  width: 633px
+  h2
+    margin-bottom: 50px
+
+.review__item
+  margin-bottom: 70px
+  p
+    font-size: 14px
+    line-height: 24px
+    font-weight: 300
+    margin-bottom: 20px
+
+.review__image
+  max-width: 100%
+  max-height: 407px
+  display: block
+  margin-bottom: 22px
+
+.review__top
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-end
+  position: relative
+  margin-bottom: 20px
+  &::before
+    content: ',,'
+    color: #ecf1f5
+    font-size: 200px
+    font-family: 'Scada'
+    font-weight: bold
+    position: absolute
+    left: -24px
+    top: -177px
+  .name
+    font-size: 20px
+    font-weight: 600
+    margin-right: 22px
+    position: relative
+    z-index: 2
+  .date
+    font-size: 12px
+    color: #59596e
+    font-weight: 300
+    position: relative
+    z-index: 2
+
+.reviews-page
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  width: 1065px
+  .load-more
+    display: block
+    margin-left: -13px
+    width: calc(100% + 13px)
+    height: 52px
+    background-color: #f4f8fb
+    margin-top: 20px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    text-transform: uppercase
+    font-family: 'Scada'
+    font-size: 14px
+    font-weight: bold
+    transition: all .3s
+    &:hover
+      opacity: .7
+
+.review__bottom
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-left: -12px
+  position: relative
+  z-index: 2
+  .link
+    margin-right: 18px
+    display: block
+    height: 23px
+    background-color: #1d1c1c
+    line-height: 23px
+    color: #ffffff
+    text-transform: uppercase
+    -webkit-border-radius: 11px
+    -moz-border-radius: 11px
+    border-radius: 11px
+    padding: 0 12px
+    font-size: 12px
+    font-family: 'Scada'
+    font-weight: bold
+
+.review__link
+  cursor: pointer
+  margin-right: 18px
+  svg
+    max-width: 17px
+    max-height: 15px
+    margin-right: 4px
+    vertical-align: middle
+  span
+    font-family: 'Scada'
+    vertical-align: middle
+    font-weight: bold
+    font-size: 12px
+    text-transform: uppercase
+
+.review-thank
+  width: 350px
+  text-align: center
+  background-color: #f4f8fb
+  padding: 34px 30px 105px 30px
+  overflow: hidden
+  position: relative
+  .title
+    margin-bottom: 22px
+    font-size: 16px
+    font-weight: 600
+    line-height: 24px
+    position: relative
+    z-index: 2
+  .text
+    font-size: 14px
+    line-height: 24px
+    font-weight: 300
+    position: relative
+    z-index: 2
+  img
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+
+.review-form
+  width: 350px
+  text-align: center
+  background-color: #f4f8fb
+  padding: 34px 30px 30px 30px
+  textarea
+    width: 100%
+    -webkit-border-radius: 15px
+    -moz-border-radius: 15px
+    border-radius: 15px
+    border: 1px solid #e1e5ec
+    resize: none
+    padding-left: 25px
+    padding-top: 17px
+    font-size: 14px
+    padding-right: 15px
+    height: 151px
+    display: block
+    margin-bottom: 25px
+    font-family: 'GraphikLCG'
+    &::placeholder
+      color: #1d1c1c
+    &:focus
+      outline: none
+  .title
+    margin-bottom: 22px
+    font-size: 16px
+    font-weight: 600
+    line-height: 24px
+  .input-wrap.basket-input
+    width: 100%
+    input
+      background-color: #ffffff
+  .input-wrap.basket-input.success::after
+    display: none
+  .input-wrap.basket-input.error::after
+    display: none
+  button
+    width: 100%
+    margin-bottom: 13px
+    height: 52px
+    background-color: #e91e63
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    color: #ffffff
+    font-weight: bold
+    font-size: 14px
+    text-transform: uppercase
+    transition: all .3s
+    &:hover
+      opacity: .7
+  .rules
+    color: #59596e
+    font-size: 12px
+    line-height: 18px
+    font-weight: 300
+    font-style: italic
+    a
+      text-decoration: underline
+
+.loyalty-page
+  width: 1108px
+  .description
+    margin-top: 20px
+    text-align: center
+    font-size: 14px
+    line-height: 24px
+    color: #59596e
+
+.loyalty__top__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  margin-top: 120px
+  margin-bottom: 90px
+
+.loyalty__top__item
+  position: relative
+  width: 320px
+  height: 270px
+  &:nth-child(1)
+    .circle
+      background-color: #75ba79
+    .content
+      background-color: #81c784
+  &:nth-child(2)
+    .circle
+      background-color: #ffae36
+    .content
+      background-color: #ffb74d
+  &:nth-child(3)
+    .circle
+      background-color: #ed6461
+    .content
+      background-color: #e57373
+  .content
+    width: 100%
+    height: 100%
+    padding-top: 110px
+    text-align: center
+    color: #ffffff
+    position: relative
+    overflow: hidden
+    .text
+      font-size: 16px
+      line-height: 24px
+      font-weight: 600
+      position: relative
+      z-index: 2
+    .bg
+      position: absolute
+      bottom: 0
+      left: 50%
+      transform: translateX(-50%)
+  .circle
+    position: absolute
+    z-index: 2
+    left: 50%
+    transform: translateX(-50%)
+    top: -57px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    width: 152px
+    height: 152px
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+    span
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 100%
+      text-align: center
+      transform: translate(-50%, -50%)
+      color: #ffffff
+      font-size: 50px
+      font-weight: 600
+      sup
+        font-size: 24px
+        font-weight: 600
+        position: relative
+        top: -1px
+        left: 2px
+
+.loyalty__middle__flex
+  margin-bottom: 90px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  .title
+    width: 190px
+    font-size: 22px
+    line-height: 30px
+    font-weight: 600
+
+.loyalty__middle__right
+  width: 825px
+  p
+    font-size: 14px
+    line-height: 24px
+    color: #59596e
+
+.loyalty__middle__flex1
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  width: 648px
+  align-items: center
+  .icon
+    width: 48px
+    height: 48px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #e91e63
+    position: relative
+    svg
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      max-width: 24px
+      max-height: 24px
+    &::before
+      content: ''
+      width: 60px
+      height: 60px
+      -webkit-border-radius: 50%
+      -moz-border-radius: 50%
+      border-radius: 50%
+      border: 1px solid #e91e63
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      position: absolute
+    &::after
+      content: ''
+      height: 1px
+      width: 240px
+      background-color: #e91e63
+      top: 50%
+      right: -6px
+      position: absolute
+      transform: translate(100%, -50%)
+    &:last-child
+      &::after
+        display: none
+
+.loyalty__middle__flex2
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  margin-top: 102px
+  padding-left: 20px
+
+.loyalty__step-item
+  position: relative
+  &:nth-child(1)
+    margin-right: 155px
+  &:nth-child(2)
+    margin-right: 125px
+  .text
+    position: relative
+    font-size: 16px
+    font-weight: 600
+    z-index: 2
+  .num
+    font-size: 120px
+    line-height: 30px
+    font-weight: 600
+    color: #e3eaf0
+    position: absolute
+    z-index: 1
+    bottom: 26px
+    left: 24px
+    transform: translateX(-100%)
+
+.loyalty__form-wrapper
+  position: relative
+  .bg1
+    position: absolute
+    bottom: -60px
+    left: 305px
+    z-index: 3
+  .bg2
+    position: absolute
+    bottom: -60px
+    z-index: 1
+    right: -80px
+  .bg3
+    position: absolute
+    z-index: 1
+    left: -42px
+    top: 0
+
+.loyalty__form
+  position: relative
+  z-index: 2
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  padding: 80px 40px 73px 38px
+  background-color: #f4f8fb
+  .title-wrap
+    width: 290px
+    padding-top: 10px
+  .title
+    margin-bottom: 10px
+    font-size: 22px
+    font-weight: 600
+  .text
+    font-size: 14px
+    line-height: 24px
+    color: #59596e
+  .inputs-wrap
+    align-items: flex-start
+    width: 675px
+    display: flex
+    flex-flow: row wrap
+    justify-content: space-between
+  .input-wrap.basket-input
+    width: 330px
+    input
+      background-color: #ffffff
+  .button-wrap
+    width: 330px
+    text-align: center
+  button
+    width: 100%
+    margin-bottom: 13px
+    height: 52px
+    background-color: #e91e63
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    color: #ffffff
+    font-weight: bold
+    font-size: 14px
+    text-transform: uppercase
+    transition: all .3s
+    &:hover
+      opacity: .7
+  .rules
+    color: #59596e
+    font-size: 12px
+    line-height: 18px
+    font-weight: 300
+    font-style: italic
+    a
+      text-decoration: underline
+
+.cases-page
+  width: 1108px
+  .load-more
+    display: block
+    width: 100%
+    height: 52px
+    background-color: #f4f8fb
+    margin-top: 20px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    text-transform: uppercase
+    font-family: 'Scada'
+    font-size: 14px
+    font-weight: bold
+    transition: all .3s
+    &:hover
+      opacity: .7
+
+.cases__top__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  margin-top: 50px
+  padding-left: 23px
+  padding-right: 96px
+  margin-bottom: 55px
+
+.cases__top__item
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  svg
+    width: 39px
+    height: 37px
+    margin-right: 10px
+  .title
+    font-size: 16px
+    line-height: 21px
+    font-weight: 600
+
+.cases__fav
+  width: 100%
+  padding: 65px 90px 20px 70px
+  background-color: #f3f7fa
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  .title-wrap
+    width: 180px
+  .title
+    padding-left: 12px
+    font-size: 22px
+    line-height: 30px
+    font-weight: 600
+    margin-bottom: 43px
+  button
+    width: 100%
+    display: block
+    height: 52px
+    background-color: #ffffff
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    text-transform: uppercase
+    font-family: 'Scada'
+    font-size: 14px
+    font-weight: bold
+    transition: all .3s
+    &:hover
+      opacity: .7
+  .logos
+    width: 695px
+    padding-top: 20px
+  .logos__flex
+    width: calc(100% + 66px)
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+  .logo
+    width: 124px
+    height: 46px
+    position: relative
+    margin-right: 66px
+    margin-bottom: 40px
+    img
+      max-width: 100%
+      max-height: 100%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+.cases__block
+  margin-bottom: 60px
+
+.cases__year__title
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin: 15px 0
+  .line
+    width: 537px
+    margin-right: 47px
+    height: 1px
+    background-color: #f3f7fa
+  .year
+    color: #f3f7fa
+    font-size: 95px
+    font-weight: bold
+
+.case__item
+  margin-bottom: 65px
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: flex-start
+  &:last-child
+    margin-bottom: 0
+
+.case__slider
+  width: 533px
+  height: 355px
+  position: relative
+  margin-right: 50px
+  .owl-next, .owl-prev
+    position: absolute
+    bottom: 16px
+    width: 40px
+    height: 40px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #ffffff
+    transition: all .3s
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      filter: invert(1)
+  .owl-next
+    right: 20px
+  .owl-prev
+    right: 83px
+    img
+      transform: translate(-50%, -50%) scale(-1)
+
+.case__img
+  width: 100%
+  height: 355px
+  position: relative
+  img
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+
+.case__text
+  padding-top: 50px
+  width: 500px
+  .title
+    margin-bottom: 5px
+    font-size: 22px
+    font-weight: 600
+  .text
+    margin-bottom: 15px
+    font-size: 14px
+    line-height: 24px
+  .persons
+    margin-bottom: 20px
+    font-size: 14px
+    b
+      font-weight: 600
+      font-size: 16px
+
+.cases__lists
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  width: 460px
+
+.cases__list
+  max-width: 210px
+  .title2
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 10px
+  li
+    display: block
+    margin-bottom: 13px
+  a
+    display: inline-block
+    position: relative
+    font-size: 14px
+    font-weight: 300
+    &::after
+      content: ''
+      width: 100%
+      height: 1px
+      bottom: 0
+      left: 0
+      right: 0
+      position: absolute
+      border-bottom: 1px solid #1d1c1c
+      transition: all .3s
+    &:hover
+      &::after
+        opacity: 0
+  .show-other
+    display: inline-block
+    color: #59596e
+    font-size: 14px
+    font-weight: 300
+    position: relative
+    cursor: pointer
+    &::after
+      content: ''
+      width: 100%
+      height: 1px
+      bottom: 0
+      left: 0
+      right: 0
+      position: absolute
+      border-bottom: 1px dotted #59596e
+      transition: all .3s
+    &:hover
+      &::after
+        opacity: 0
+
+.contacts-page
+  padding-top: 40px
+  h2
+    margin-top: 13px
+    text-align: left
+
+.contacts__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  margin-top: 35px
+  margin-bottom: 40px
+  padding-right: 260px
+
+.contacts__address
+  font-size: 16px
+  line-height: 30px
+  font-weight: 300
+
+.contacts__item
+  .title
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 14px
+  .socials
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: center
+    margin-top: 10px
+    a
+      margin-right: 55px
+      display: flex
+      flex-flow: row wrap
+      justify-content: flex-start
+      align-items: center
+      &:last-child
+        margin-right: 0
+      img
+        filter: invert(1)
+        max-width: 16px
+        max-height: 15px
+        margin-right: 10px
+      span
+        font-size: 16px
+        font-weight: 600
+
+.contacts__phone
+  font-size: 21px
+  margin-bottom: 10px
+
+.contacts__email
+  font-size: 16px
+  font-weight: 600
+  text-decoration: underline
+  margin-top: 15px
+
+.contacts__time
+  font-size: 16px
+  line-height: 30px
+  font-weight: 300
+
+.contacts-page
+  .map
+    width: 100%
+    height: 100%
+
+.contacts-map
+  width: 100%
+  height: 490px
+  position: relative
+  margin-bottom: 90px
+  .lds-spinner
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  .bg
+    position: absolute
+    bottom: -110px
+    left: -140px
+
+.contacts-form-wrapper
+  background-color: #f3f7fa
+  padding: 85px 0 100px 0
+
+.contacts-form__flex
+  padding-right: 58px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  .title
+    font-size: 30px
+    font-weight: 600
+    line-height: 40px
+  .review-form textarea
+    height: 124px
+    margin-bottom: 20px
+
+.contacts-form
+  padding: 0
+  width: 875px
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  .review-form__block
+    width: 380px
+
+.confident-content
+  padding-right: 410px
+  margin-top: 30px
+  margin-bottom: 50px
+  h3
+    margin-bottom: 20px
+    font-size: 22px
+    font-weight: 600
+  p
+    font-size: 14px
+    color: #59596e
+    line-height: 24px
+    &:nth-child(2)
+      margin-bottom: 30px
+    &:nth-child(4)
+      margin-bottom: 20px
+
+.confident__item
+  position: relative
+  padding-left: 35px
+  color: #59596e
+  font-size: 14px
+  line-height: 24px
+  margin-bottom: 20px
+  img
+    position: absolute
+    top: 0
+    left: 0
+    width: 18px
+    height: 18px
+
+.confident-page
+  padding-bottom: 100px
+
+.confident-img
+  width: 450px
+  height: 300px
+  position: relative
+  overflow: hidden
+  img
+    position: absolute
+    width: 100%
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.confident__slider
+  .owl-next, .owl-prev
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    width: 40px
+    height: 40px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #e7eaef
+    transition: all .3s
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      filter: invert(1)
+  .owl-next
+    right: -60px
+  .owl-prev
+    left: -60px
+    img
+      transform: translate(-50%, -50%) scale(-1)
+
+.delivery-page
+  h1
+    text-align: center
+    margin-top: 50px
+    margin-bottom: 40px
+    font-size: 50px
+    line-height: 50px
+    font-weight: 600
+
+.delivery-page__flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+  position: relative
+  .map-wrapper
+    width: 680px
+    height: 480px
+
+.flex-bg1
+  position: absolute
+  top: -190px
+  right: 280px
+
+.flex-bg2
+  position: absolute
+  bottom: -165px
+  right: -40px
+
+.flex-bg3
+  position: absolute
+  left: -100px
+  bottom: 155px
+
+.flex-bg4
+  position: absolute
+  top: -50px
+  left: -30px
+  z-index: 2
+
+.delivery-page__item
+  background-color: #f4f8fb
+  width: 680px
+  height: 480px
+  position: relative
+  overflow: hidden
+  padding: 78px 235px 0 40px
+  .title
+    font-size: 22px
+    font-weight: 600
+    margin-bottom: 12px
+  .text
+    color: #59596e
+    font-size: 14px
+    line-height: 24px
+    margin-bottom: 25px
+  .title2
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 18px
+
+.delivery-page__zone
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-bottom: 10px
+  .circle
+    width: 22px
+    height: 22px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    margin-right: 11px
+  .circle.blue
+    background-color: #5cc0fd
+  .circle.red
+    background-color: #f44336
+  .circle.yellow
+    background-color: #ffc410
+
+  span
+    font-size: 14px
+    color: #59596e
+
+.item-bg2
+  position: absolute
+  right: -40px
+  bottom: 20px
+
+.item-bg1
+  position: absolute
+  top: 110px
+  right: 15px
+
+.delivery-page__pickup-flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  padding-left: 40px
+  margin: 120px 0 100px 0
+  .title
+    font-size: 22px
+    line-height: 30px
+    font-weight: 600
+    margin-right: 115px
+
+.delivery-page__pickup-item
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-right: 85px
+  .circle
+    width: 48px
+    height: 48px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    background-color: #e91e63
+    position: relative
+    margin-right: 17px
+    img
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 30px
+      height: 27px
+  .text
+    font-size: 16px
+    line-height: 24px
+    font-weight: 600
+
+.delivery-page__bottom
+  z-index: 2
+  background-color: #f4f8fb
+  padding: 73px 175px 95px 40px
+  position: relative
+  .title
+    font-size: 22px
+    margin-bottom: 33px
+    font-weight: 600
+  .bg
+    position: absolute
+    bottom: -55px
+    left: 795px
+
+.delivery-page__bottom-flex
+  display: flex
+  flex-flow: row wrap
+  justify-content: space-between
+  align-items: flex-start
+
+.delivery-page__bottom-item
+  width: 500px
+  .title2
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 12px
+    img
+      width: 42px
+      height: 29px
+      margin-right: 12px
+    span
+      font-size: 16px
+      font-weight: 600
+  .text
+    color: #59596e
+    font-size: 14px
+    line-height: 24px
+    padding-left: 54px
+
+.delivery-payments
+  padding-left: 54px
+  display: flex
+  flex-flow: row wrap
+  justify-content: flex-start
+  align-items: center
+  margin-top: 28px
+  img
+    margin-right: 18px
+
+.delivery-bg1
+  position: absolute
+  bottom: 190px
+  left: -50px
+
+.delivery-bg2
+  position: absolute
+  bottom: -60px
+  right: -70px
+
+.page-not-found
+  padding: 200px 0 100px 0
+  .home__block1__cards
+    margin-top: 0
+  .title2
+    margin-bottom: 25px
+    font-size: 30px
+    font-weight: 600
+
+.page-not-found__block
+  text-align: center
+  margin-bottom: 90px
+  position: relative
+  .bg
+    position: absolute
+    bottom: -47px
+    right: 260px
+  h1
+    color: #edf1f7
+    font-size: 260px
+    line-height: 30px
+    font-weight: 600
+  h2
+    font-size: 22px
+    line-height: 29px
+    font-weight: 600
+    margin-top: 20px
+    margin-bottom: 25px
+  a
+    margin: 0 auto
+    width: 210px
+    display: block
+    line-height: 52px
+    height: 52px
+    background-color: #e91e63
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    color: #ffffff
+    font-weight: bold
+    font-size: 14px
+    text-transform: uppercase
+    transition: all .3s
+    &:hover
+      opacity: .7
+
+.search-page
+  padding-top: 35px
+  padding-bottom: 100px
+  h2
+    text-align: left
+    margin-top: 30px
+    margin-bottom: 25px
+  form
+    position: relative
+    margin-bottom: 40px
+    &::before
+      content: ''
+      width: 25px
+      height: 25px
+      opacity: .4
+      -webkit-background-size: cover
+      background-size: cover
+      background-image: url('data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAMAAAANf8AYAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABwlBMVEUdHBz///8dHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwdHBwAAABAq8aZAAAAlHRSTlMAAANBgbXd9vfguII/J5Lt6Ycepv76jxEBbepNDK6JD8nXtqO33KUGCsZdExljw6nBMUDSagRLGPBCWuWbRFmIH/xniwd25zPUOrwifWR7spbZ4vi91tiwyr7e+5OEaWXHBezVzw3kdSV/mvShVoMc8nwLl0ZIAuHCzXMpMNrvzMDQ8whm6HgboCGK5oU10as5cbsXQvDe8gAAAAFiS0dElQhgeoMAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfkBBcSKh+EjowRAAACUElEQVRIx6XV7V8MURQH8LMTtt1YtT0NRdYmVCtksxWtZVMokccQiuSxItYzkfIYyvzBmnPn4dw7946dj/Nuz+98d2bnzt4LQEsrWbN2XdgwSiPRsvUayCoUCtGPG2IbDVLlFfF/mXhllSFUdU2tn9E3hQ1Jba5Tm/othqK2agrTsM0dSmxPJht3uJ+bdkrNrt32QGNzC4taU3vsXpsuM5VWuncfTfe3W+0KiUlZT+kA94UA6TLrSXZ4zMEMBuFO72J0VWPU3SCaQ+wqh2Wr3sMulBXMkRy2j0rfFMiye2jhzTH283W5yScw7uWMdhybfaCoOoz7OXMCeydVBHR2oVPUDGBrUGngNA6kqBnCVqva9OHAGWrOmp1hNYH0Oe7mTYOd8z4GLpgTF6nBK1/yM5fNicj/GnyjRvxMglsg01zBl9CH5K+aE1FqonhzcbVhi36NmlFsXVcbNnCDmhJs3VQSLeJ9d8bGsdepMs0Y3wJqIIbN22k5mbiD8SRv7rI//T25uY/hg1rewEP2/30kI1MsmwLBTM+wDaHLSx4zMlwvGhi09rHRMV48mbWCp+AxkLSy/mckLPQ8t3fSWd1r8i/s9OWr15gX3gy8JRs9Qc4ePzHi5u/ez819+CicDi5yz5L5JsO/HETPuU8zstGFjkUBcWfj5y85UZTWrG7UAhLO4K/fuqn4/mMa2zwSzOoGuDTZ9nMhkylv/7X4uyCsLEMeo6gsQcUaB8UCGAdlAxgXBTAUFW0IKt44qDeAsVEmiLFQLpBhaCiYgeXxqpU/fwE055+vDNOESgAAAABJRU5ErkJggg==')
+      position: absolute
+      top: 0
+      left: 0
+    input
+      width: 800px
+      padding-left: 43px
+      font-weight: 600
+      border-bottom: 1px solid #d0d4de
+      padding-bottom: 12px
+      font-size: 22px
+.search-menu
+  width: auto
+  display: inline-block
+  padding: 0
+  ul
+    display: flex
+    flex-flow: row wrap
+    justify-content: flex-start
+.search-menu .link
+  width: auto
+  padding: 0 25px
+.search-menu-wrapper
+  margin-bottom: 45px
+.search-items-wrapper
+  .load-more
+    display: block
+    width: 100%
+    height: 52px
+    background-color: #f4f8fb
+    margin-top: 20px
+    -webkit-border-radius: 26px
+    -moz-border-radius: 26px
+    border-radius: 26px
+    text-transform: uppercase
+    font-family: 'Scada'
+    font-size: 14px
+    font-weight: bold
+    transition: all .3s
+    &:hover
+      opacity: .7
+
+
+@import "media"
+@import 'loader'
+
+@import 'node_modules/react-modal-video/scss/modal-video.scss'
